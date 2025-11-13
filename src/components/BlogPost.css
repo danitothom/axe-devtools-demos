@@ -1,0 +1,71 @@
+.Blog {
+  margin: 0 0 var(--space-largest) 0;
+}
+
+.Blog .Link {
+  display: inline-block;
+}
+
+.Icon__left {
+  transform: rotate(90deg);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Blog .Link.Back {
+  margin: 0 0 var(--space-small) 0;
+}
+
+.Blog .Report {
+  margin-left: auto;
+  margin-right: 1.1em;
+}
+
+.Blog__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Reported {
+  position: absolute;
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 2em auto;
+  z-index: 9;
+  background-color: var(--workspace-background-color);
+  color: var(--text-color-base);
+  box-shadow: 0 0 3px;
+  display: flex;
+  align-items: center;
+}
+
+.cauldron--theme-dark .Reported {
+  background-color: var(--dark-workspace-color);
+  color: var(--white);
+}
+
+.Blog__head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+}
+
+.Blog__head img {
+  width: 40px;
+}
+
+.Carousel {
+  max-width: 700px;
+  margin: 1em auto;
+}
+
+.Carousel .BrainhubCarousel__trackContainer {
+  border: 3px solid;
+  border-radius: 10px;
+}
+
+.ChevronRight {
+  transform: rotate(-90deg);
+}

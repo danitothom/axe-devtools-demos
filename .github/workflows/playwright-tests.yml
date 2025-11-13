@@ -1,0 +1,63 @@
+name: PlaywrightTests
+
+on: [push]
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ludeeus/action-shellcheck@2.0.0
+  playwright-watcher:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: |
+          # Pull public packages from the public registry.
+          npm config set "registry" "https://registry.npmjs.org/"
+          # Pull our private packages from Agora.
+          npm config set "@axe-devtools:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          npm config set "@deque:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:_auth" "${{ secrets.AGORA_AUTH_TOKEN }}"
+          npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:email" "${{ secrets.AGORA_AUTH_EMAIL }}"
+      - run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install
+      - run: npm run build
+      - name: Run tests
+        uses: GabrielBB/xvfb-action@v1
+        env:
+          AAD_ADTD_PW_APIKEY: ${{ secrets.AAD_ADTD_PW_APIKEY }}
+          SERVER_URL: https://axe.deque.com
+        with:
+          run: npm run e2e:playwright:watcher
+  playwright-devtools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+          # Pull public packages from the public registry.
+          npm config set "registry" "https://registry.npmjs.org/"
+          # Pull our private packages from Agora.
+          npm config set "@axe-devtools:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          npm config set "@deque:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:_auth" "${{ secrets.AGORA_AUTH_TOKEN }}"
+          npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:email" "${{ secrets.AGORA_AUTH_EMAIL }}"
+      - run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install
+      - run: npm run build
+      - name: Run tests
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: npm run e2e:playwright:devtools
+      - name: Store test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: axe-devtools-api-playwright-results
+          path: results/*

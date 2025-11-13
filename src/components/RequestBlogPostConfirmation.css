@@ -1,0 +1,12 @@
+.blog-confirmation p {
+  display: flex;
+}
+
+.blog-confirmation .Icon {
+  margin-right: 6px;
+  color: var(--accent-success);
+}
+
+.blog-confirmation a {
+  color: #888282;
+}

@@ -1,0 +1,42 @@
+.LandingPage {
+  padding: var(--space-small) 0;
+  max-width: 1000px;
+}
+
+.LandingPage__head {
+  display: flex;
+  align-items: center;
+}
+
+.LandingPage__head .OptionsMenu {
+  margin-left: var(--space-small);
+}
+
+.LandingPage__head .OptionsMenu .Icon {
+  display: flex;
+}
+
+.LandingPage .Panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.LandingPage .Panel em {
+  color: #8e8686;
+}
+
+.LandingPage .Panel img {
+  width: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.LandingPage .Panel a:focus {
+  color: var(--gray-20);
+}
+
+.cauldron--theme-dark .LandingPage .Panel a:focus {
+  color: var(--gray-80);
+}

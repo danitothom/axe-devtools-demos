@@ -1,0 +1,34 @@
+image: cypress/browsers:node18.6.0-chrome105-ff104
+
+definitions:
+  caches:
+    cypress: /root/.cache/Cypress/11.2.0/Cypress/
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - node
+          - cypress
+        script:
+# Pull public packages from the public registry.
+          - npm config set "registry" "https://registry.npmjs.org/"
+# Pull our private packages from Agora.
+          - npm config set "@axe-devtools:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          - npm config set "@deque:registry" "https://agora.dequecloud.com/artifactory/api/npm/dequelabs/"
+          - npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:_auth" "$AGORA_AUTH_TOKEN"
+          - npm config set "//agora.dequecloud.com/artifactory/api/npm/dequelabs/:email" "$AGORA_AUTH_EMAIL"
+          - npm install
+          - npm run build
+          - npx cypress install
+          - npm run e2e:cypress:watcher
+    - step:
+        name: Accessibility results
+        caches:
+          - node
+        script:
+          - export COMMIT_SHA="$BITBUCKET_COMMIT"
+          - export RETRY_COUNT=10
+          - chmod 755 bitbucket/dev-hub.sh
+          - ./bitbucket/dev-hub.sh

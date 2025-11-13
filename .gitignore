@@ -1,0 +1,8 @@
+node_modules
+build
+/results
+.DS_Store
+# ignore top-level cypress output (but do not ignore test/*/cypress/*)
+/cypress
+playwright-report/
+test-results/

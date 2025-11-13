@@ -1,0 +1,5 @@
+global-libraries:
+  - '@mui/material'
+  - '@deque/cauldron-react'
+global-components:
+  CardMedia: img # Lint <CardMedia> as though it was an <img />

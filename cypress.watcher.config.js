@@ -1,6 +1,6 @@
 const { defineConfig } = require('cypress')
 const { cypressConfig } = require('@axe-core/watcher')
-const assert = require('assert')
+const assert = require('node:assert')
 
 const { SERVER_URL, API_KEY } = process.env
 

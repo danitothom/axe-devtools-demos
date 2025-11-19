@@ -1,18 +1,18 @@
 const path = require("node:path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
 
-module.exports = (env, argv) => {
+const webpackConfig = (env, argv) => {
   const isDev = argv.mode === "development";
 
   return {
     entry: "./src/index.js",
 
     output: {
-      filename: isDev ? "main.js" : "main.[contenthash].js",
-      path: path.resolve(__dirname, "build"),
-      clean: true // limpia la carpeta build automáticamente
-    },
+  path: path.resolve(__dirname, "public"),
+  filename: "[name].js",
+  chunkFilename: "[name].js",
+  clean: true
+},
 
     mode: isDev ? "development" : "production",
 
@@ -80,10 +80,6 @@ module.exports = (env, argv) => {
         template: "./public/index.html",
         favicon: "./public/favicon.ico"
       }),
-      new ESLintPlugin({
-        extensions: ["js", "jsx"],
-        emitWarning: true
-      })
     ],
 
     optimization: {
@@ -93,3 +89,5 @@ module.exports = (env, argv) => {
     }
   };
 };
+
+module.exports = webpackConfig;

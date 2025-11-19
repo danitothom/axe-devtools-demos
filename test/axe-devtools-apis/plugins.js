@@ -1,7 +1,7 @@
 const axeDevToolsPlugin = require('@axe-devtools/cypress/dist/plugin')
 const Reporter = require('@axe-devtools/reporter').default
 
-module.exports = (on, config) => {
+const axeDevToolsPluginsHandler = (on, config) => {
   axeDevToolsPlugin(on)
 
   on('task', {
@@ -31,3 +31,5 @@ module.exports = (on, config) => {
 
   return config
 }
+
+module.exports = axeDevToolsPluginsHandler

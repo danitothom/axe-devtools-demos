@@ -9,7 +9,7 @@ describe('Dashboard', () => {
       )
 
       cy.writeFile(
-        `${resultsDir}results-dashboard-${new Date().valueOf()}.json`,
+        `${resultsDir}results-dashboard-${Date.now()}.json`,
         results
       )
     })

@@ -27,7 +27,7 @@ describe('Dashboard', () => {
       cy.get('input[type="number"][min="0"][max="50"]').eq(0).type('25')
       cy.get(
         '#main-content > div.Recipes > div.Dialog.Modal.Dialog--show > div > form > div.Dialog__content > div.RecipeModal__global > div.Checkbox__wrap > div'
-      ).click
+      ).click()
       cy.get(
         '#main-content > div.Recipes > div.Dialog.Modal.Dialog--show > div > form > div.Dialog__footer > button.Button--primary'
       ).click()

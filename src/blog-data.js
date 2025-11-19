@@ -2,12 +2,12 @@ import React from 'react'
 import Carousel, {
   autoplayPlugin,
   arrowsPlugin,
-} from '@brainhubeu/react-carousel'
+} from 'react-responsive-carousel'
 import { IconButton } from '@deque/cauldron-react'
 import burger from './img/food/burger.png'
 import burger1 from './img/food/burger1.jpg'
 import burger2 from './img/food/burger2.jpg'
-import '@brainhubeu/react-carousel/lib/style.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 const blogData = [
   {

@@ -9,7 +9,12 @@
     "test": "mocha --require global-jsdom/register --require @babel/register --require ignore-styles 'src/**/*.test.{js,jsx}' --exit",
     "lint": "eslint --ext .js,.jsx src",
     "fmt": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:devtools": "cypress run --headed --browser=chrome --config-file=cypress.devtools.config.js",
+    "cypress:watcher": "cypress run --headed --browser=chrome --config-file=cypress.watcher.config.js",
+    "cypress:interactive": "cypress open --browser=chrome --config-file=cypress.watcher.config.js",
+    "e2e:cypress:devtools": "start-server-and-test start-server http://localhost:3033 cypress:devtools",
+    "e2e:cypress:watcher": "start-server-and-test start-server http://localhost:3033 cypress:watcher"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -23,15 +28,17 @@
     "swiper": "^12.0.3"
   },
   "devDependencies": {
+    "@axe-core/watcher": "^3.23.0",
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.24.0",
     "@babel/register": "^7.23.7",
     "babel-loader": "^9.1.4",
     "css-loader": "^6.9.0",
+    "cypress": "^15.6.0",
+    "dotenv": "^17.2.3",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-webpack-plugin": "^5.0.2",
     "file-loader": "^6.2.0",
     "global-jsdom": "^8.7.0",
     "html-webpack-plugin": "^5.6.0",

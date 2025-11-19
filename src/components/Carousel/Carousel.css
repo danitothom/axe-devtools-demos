@@ -1,0 +1,18 @@
+.carousel-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto; /* centrar */
+}
+
+.carousel .slide img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px;
+  padding: 6px 12px;
+}

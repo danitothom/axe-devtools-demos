@@ -2,67 +2,46 @@
   "name": "axe-devtools-demos",
   "version": "1.0.0",
   "description": "axe DevTools Demos",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha --require global-jsdom/register --require @babel/register --require ignore-styles 'src/**/*.test.{js,jsx}' --exit",
-    "build": "webpack --mode development",
     "start": "webpack serve --mode development",
-    "start-server": "serve build --single -p 3033",
-    "lint": "eslint --fix --ext .js,.jsx .",
+    "build": "webpack --mode production",
+    "test": "mocha --require global-jsdom/register --require @babel/register --require ignore-styles 'src/**/*.test.{js,jsx}' --exit",
+    "lint": "eslint --ext .js,.jsx src",
     "fmt": "prettier --write .",
-    "prepare": "husky install",
-    "pree2e:devtools": "rimraf ./results",
-    "cypress:devtools": "cypress run --headed --browser=chrome --config-file=cypress.devtools.config.js",
-    "cypress:watcher": "cypress run --headed --browser=chrome --config-file=cypress.watcher.config.js",
-    "cypress:interactive": "cypress open --browser=chrome --config-file=cypress.watcher.config.js",
-    "e2e:cypress:devtools": "start-server-and-test start-server http://localhost:3033 cypress:devtools",
-    "e2e:cypress:watcher": "start-server-and-test start-server http://localhost:3033 cypress:watcher",
-    "playwright:devtools": "playwright test --project=axe-devtools-apis",
-    "playwright:watcher": "playwright test --project=axe-watcher",
-    "e2e:playwright:devtools": "start-server-and-test start-server http://localhost:3033 playwright:devtools",
-    "e2e:playwright:watcher": "start-server-and-test start-server http://localhost:3033 playwright:watcher",
-    "start:mui": "yarn --cwd=mui start"
+    "prepare": "husky install"
   },
-  "keywords": [],
-  "author": "",
   "license": "UNLICENSED",
-  "devDependencies": {
-    "@babel/core": "^7.22.0",
-    "@babel/preset-env": "^7.22.0",
-    "@babel/preset-react": "^7.22.0",
-    "babel-loader": "^9.1.0",
-    "css-loader": "^6.8.0",
-    "html-webpack-plugin": "^5.5.0",
-    "style-loader": "^3.3.0",
-    "webpack": "^5.88.0",
-    "webpack-cli": "^5.1.0",
-    "webpack-dev-server": "^4.15.0"
-  },
   "dependencies": {
-    "@brainhubeu/react-carousel": "^2.0.4",
     "@deque/cauldron-react": "^5.3.0",
     "@deque/cauldron-styles": "^5.3.0",
     "classnames": "^2.3.2",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "react-router-dom": "^5.0.0 || ^6.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.23.1",
+    "swiper": "^12.0.3"
   },
-  "lint-staged": {
-    "**/*.{js,jsx}": [
-      "npm run lint",
-      "prettier --write"
-    ]
-  },
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/danitothom/axe-devtools-demos.git"
-  },
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/danitothom/axe-devtools-demos/issues"
-  },
-  "homepage": "https://github.com/danitothom/axe-devtools-demos#readme"
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "@babel/register": "^7.23.7",
+    "babel-loader": "^9.1.4",
+    "css-loader": "^6.9.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-webpack-plugin": "^5.0.2",
+    "file-loader": "^6.2.0",
+    "global-jsdom": "^8.7.0",
+    "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.1.1",
+    "ignore-styles": "^5.0.1",
+    "mocha": "^10.4.0",
+    "prettier": "^3.2.5",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.2"
+  }
 }
